@@ -48,12 +48,16 @@ namespace ItalicComments
 
         void SetGradientBrush(IEditorFormatMap formatMap)
         {
+            Color highlight = SystemColors.HighlightColor;
+            Color darkColor = Color.FromArgb(96, highlight.R, highlight.G, highlight.B);
+            Color lightColor = Color.FromArgb(48, highlight.R, highlight.G, highlight.B);
+
             // Change the selected text properties to use a gradient brush and an outline pen
             var properties = formatMap.GetProperties("Selected Text");
             properties[EditorFormatDefinition.BackgroundBrushId] = new LinearGradientBrush(
-                new GradientStopCollection() { new GradientStop(Colors.LightSkyBlue, 0.0), new GradientStop(Colors.AliceBlue, 0.5), new GradientStop(Colors.LightSkyBlue, 1.0) },
+                new GradientStopCollection() { new GradientStop(darkColor, 0.0), new GradientStop(lightColor, 0.5), new GradientStop(darkColor, 1.0) },
                 90.0);
-            properties["BackgroundPen"] = new Pen(Brushes.Blue, 0.5);
+            properties["BackgroundPen"] = new Pen(SystemColors.HighlightBrush, 1) { LineJoin = PenLineJoin.Round };
             formatMap.SetProperties("Selected Text", properties);
         }
 

@@ -16,15 +16,20 @@ namespace ItalicComments
         [Import]
         IEditorFormatMapService formatMapService = null;
 
+        /// <summary>
+        /// When a text view is created, update its format map.
+        /// </summary>
         public void TextViewCreated(IWpfTextView textView)
         {
             var formatMap = formatMapService.GetEditorFormatMap(textView);
 
+            // Set the gradient brush only if the rich client experience is enabled
             if (!textView.Options.GetOptionValue(DefaultWpfViewOptions.EnableSimpleGraphicsId))
             {
                 SetGradientBrush(formatMap);
             }
 
+            // Track the rich client option changing, to set and clear the gradient brush
             textView.Options.OptionChanged += (sender, args) =>
                 {
                     if (args.OptionId == DefaultWpfViewOptions.EnableSimpleGraphicsId.Name)
@@ -43,6 +48,7 @@ namespace ItalicComments
 
         void SetGradientBrush(IEditorFormatMap formatMap)
         {
+            // Change the selected text properties to use a gradient brush and an outline pen
             var properties = formatMap.GetProperties("Selected Text");
             properties[EditorFormatDefinition.BackgroundBrushId] = new LinearGradientBrush(
                 new GradientStopCollection() { new GradientStop(Colors.LightSkyBlue, 0.0), new GradientStop(Colors.AliceBlue, 0.5), new GradientStop(Colors.LightSkyBlue, 1.0) },
@@ -53,6 +59,7 @@ namespace ItalicComments
 
         void ClearGradientBrush(IEditorFormatMap formatMap)
         {
+            // Clear out the gradient brush and outline pen
             var properties = formatMap.GetProperties("Selected Text");
             properties.Remove(EditorFormatDefinition.BackgroundBrushId);
             properties.Remove("BackgroundPen");

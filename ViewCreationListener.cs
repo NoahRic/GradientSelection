@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 
-namespace ItalicComments
+namespace GradientSelection
 {
     [Export(typeof(IWpfTextViewCreationListener))]
     [ContentType("any")]

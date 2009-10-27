@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Vsix Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+<Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
     <Identifier Id="GradientSelection">
         <Name>Gradient Selection</Name>
         <Author>Microsoft</Author>
         <Version>1.0</Version>
         <Description>Make the selection use a gradient brush in rich client experience mode.</Description>
+        <Locale>1033</Locale>
         <MoreInfoUrl>http://blogs.msdn.com/noahric</MoreInfoUrl>
         <License>ms-pl.txt</License>
-        <Locale>1033</Locale>
+        <Icon>gradient-selection-icon.png</Icon>
+        <PreviewImage>gradient-selection-screenshot.png</PreviewImage>
         <SupportedProducts>
             <VisualStudio Version="10.0">
                 <Edition>VST_All</Edition>
@@ -17,7 +19,6 @@
         <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
     </Identifier>
     <References />
-
     <Content>
         <MefComponent>|GradientSelection|</MefComponent>
     </Content>

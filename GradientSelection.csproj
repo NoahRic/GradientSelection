@@ -66,6 +66,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="gradient-selection-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="gradient-selection-screenshot.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="ms-pl.txt">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>

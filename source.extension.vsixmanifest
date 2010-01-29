@@ -3,7 +3,7 @@
     <Identifier Id="GradientSelection">
         <Name>Gradient Selection</Name>
         <Author>Noah Richards</Author>
-        <Version>1.1</Version>
+        <Version>1.2</Version>
         <Description>Make the selection use a gradient brush in rich client experience mode.</Description>
         <Locale>1033</Locale>
         <MoreInfoUrl>http://blogs.msdn.com/noahric</MoreInfoUrl>

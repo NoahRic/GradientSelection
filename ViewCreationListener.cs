@@ -23,7 +23,8 @@ namespace GradientSelection
         /// </summary>
         public void TextViewCreated(IWpfTextView textView)
         {
-            new FormatMapWatcher(textView, formatMapService.GetEditorFormatMap(textView));
+            textView.Properties.GetOrCreateSingletonProperty(() => 
+                     new FormatMapWatcher(textView, formatMapService.GetEditorFormatMap(textView)));
         }
     }
 
@@ -99,9 +100,22 @@ namespace GradientSelection
         {
             // Change the selected text properties to use a gradient brush and an outline pen
             var properties = formatMap.GetProperties("Selected Text");
-            properties[EditorFormatDefinition.BackgroundBrushId] = gradientBrush;
-            properties["BackgroundPen"] = gradientBorder;
-            formatMap.SetProperties("Selected Text", properties);
+            
+            bool modified = false;
+
+            if (properties[EditorFormatDefinition.BackgroundBrushId] != gradientBrush)
+            {
+                modified = true;
+                properties[EditorFormatDefinition.BackgroundBrushId] = gradientBrush;
+            }
+            if (properties["BackgroundPen"] != gradientBorder)
+            {
+                modified = true;
+                properties["BackgroundPen"] = gradientBorder;
+            }
+
+            if (modified)
+                formatMap.SetProperties("Selected Text", properties);
         }
 
         void ClearGradientBrush()
@@ -109,12 +123,21 @@ namespace GradientSelection
             // Clear out the gradient brush and outline pen
             var properties = formatMap.GetProperties("Selected Text");
 
-            if (properties[EditorFormatDefinition.BackgroundBrushId] == gradientBrush)
-                properties.Remove(EditorFormatDefinition.BackgroundBrushId);
-            if (properties["BackgroundPen"] == gradientBorder)
-                properties.Remove("BackgroundPen");
+            bool modified = false;
 
-            formatMap.SetProperties("Selected Text", properties);
+            if (properties[EditorFormatDefinition.BackgroundBrushId] == gradientBrush)
+            {
+                modified = true;
+                properties.Remove(EditorFormatDefinition.BackgroundBrushId);
+            }
+            if (properties["BackgroundPen"] == gradientBorder)
+            {
+                modified = true;
+                properties.Remove("BackgroundPen");
+            }
+
+            if (modified)
+                formatMap.SetProperties("Selected Text", properties);
         }
     }
 }

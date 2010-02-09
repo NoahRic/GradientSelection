@@ -1,25 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
-    <Identifier Id="GradientSelection">
-        <Name>Gradient Selection</Name>
-        <Author>Noah Richards</Author>
-        <Version>1.2</Version>
-        <Description>Make the selection use a gradient brush in rich client experience mode.</Description>
-        <Locale>1033</Locale>
-        <MoreInfoUrl>http://blogs.msdn.com/noahric</MoreInfoUrl>
-        <License>ms-pl.txt</License>
-        <Icon>gradient-selection-icon.png</Icon>
-        <PreviewImage>gradient-selection-screenshot.png</PreviewImage>
-        <SupportedProducts>
-            <VisualStudio Version="10.0">
-                <Edition>VST_All</Edition>
-                <Edition>Pro</Edition>
-            </VisualStudio>
-        </SupportedProducts>
-        <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
-    </Identifier>
-    <References />
-    <Content>
-        <MefComponent>|GradientSelection|</MefComponent>
-    </Content>
+  <Identifier Id="GradientSelection">
+    <Name>Gradient Selection</Name>
+    <Author>Noah Richards</Author>
+    <Version>2.0</Version>
+    <Description>Make the selection use a gradient brush in rich client experience mode.</Description>
+    <Locale>1033</Locale>
+    <MoreInfoUrl>http://blogs.msdn.com/noahric</MoreInfoUrl>
+    <License>ms-pl.txt</License>
+    <Icon>gradient-selection-icon.png</Icon>
+    <PreviewImage>gradient-selection-screenshot.png</PreviewImage>
+    <SupportedProducts>
+      <VisualStudio Version="10.0">
+        <Edition>Ultimate</Edition>
+        <Edition>Premium</Edition>
+        <Edition>Pro</Edition>
+      </VisualStudio>
+    </SupportedProducts>
+    <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
+  </Identifier>
+  <References />
+  <Content>
+    <MefComponent>|%CurrentProject%|</MefComponent>
+  </Content>
 </Vsix>

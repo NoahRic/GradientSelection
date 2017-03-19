@@ -23,7 +23,7 @@ namespace GradientSelection
         /// </summary>
         public void TextViewCreated(IWpfTextView textView)
         {
-            textView.Properties.GetOrCreateSingletonProperty(() => 
+            textView.Properties.GetOrCreateSingletonProperty(() =>
                      new FormatMapWatcher(textView, formatMapService.GetEditorFormatMap(textView)));
         }
     }
@@ -43,8 +43,8 @@ namespace GradientSelection
             Color darkColor = Color.FromArgb(96, highlight.R, highlight.G, highlight.B);
             Color lightColor = Color.FromArgb(48, highlight.R, highlight.G, highlight.B);
 
-            gradientBrush = new LinearGradientBrush(new GradientStopCollection() { new GradientStop(darkColor, 0.0), 
-                                                                                   new GradientStop(lightColor, 0.5), 
+            gradientBrush = new LinearGradientBrush(new GradientStopCollection() { new GradientStop(darkColor, 0.0),
+                                                                                   new GradientStop(lightColor, 0.5),
                                                                                    new GradientStop(darkColor, 1.0) },
                                                     90.0);
             gradientBorder = new Pen(SystemColors.HighlightBrush, 1) { LineJoin = PenLineJoin.Round };
@@ -57,7 +57,7 @@ namespace GradientSelection
         {
             this.formatMap = formatMap;
             this.view = view;
-            
+
             this.SetAppropriateBrush();
 
             formatMap.FormatMappingChanged += (sender, args) => SetAppropriateBrush();
@@ -100,7 +100,7 @@ namespace GradientSelection
         {
             // Change the selected text properties to use a gradient brush and an outline pen
             var properties = formatMap.GetProperties("Selected Text");
-            
+
             bool modified = false;
 
             if (properties[EditorFormatDefinition.BackgroundBrushId] != gradientBrush)
